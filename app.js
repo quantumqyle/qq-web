@@ -1,15 +1,15 @@
-const express = require("express");
+// initializes express app
+const express = require("express")
+const app = express()
 
-const path = require("express");
+//using express-static middleware
+app.use(express.static("public"))
 
-const app = express();
+// define first route
+app.get("/", function (req, res) {
+    res.send("<h1>QQ TEST<h1>")
+})
 
-const PORT = process.env.PORT || 8000;
-
-app.get ("", (req, res) => {
-    res.status(200).send("MEAN");
-});
-
-app.listen(PORT, () => {
-    console.log(`Listenings to request from: https://localhost:${PORT}`);
-});
+// starts listening to request from server
+app.listen(process.env.PORT || 3000,
+    () => console.log("Server currently running..."))
